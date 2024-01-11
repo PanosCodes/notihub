@@ -4,9 +4,14 @@ import (
 	"fmt"
 
 	"notihub.panos.codes/CLI"
+	"notihub.panos.codes/Github"
 )
 
 func main() {
 	userInputs := CLI.Parse()
-	fmt.Println(userInputs)
+
+	cli := Github.CLI{Repo: userInputs["repo"]}
+	pulls := Github.GetPulls(&cli)
+
+	fmt.Println(pulls)
 }
